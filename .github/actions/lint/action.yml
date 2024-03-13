@@ -1,0 +1,10 @@
+name: ESLint
+description: Run ESLint
+runs:
+  using: "composite"
+  steps:
+    - name: run lint
+      shell: bash
+      run: |
+           npm ci
+           npm run lint

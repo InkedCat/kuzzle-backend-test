@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": [
+      "ES6",
+      "DOM"
+    ],
+    "declaration": true,
+    "listEmittedFiles": true,
+    "module": "commonjs",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "lib/*": [
+        "lib/*"
+      ],
+      "tests/*": [
+        "tests/*"
+      ]
+    },
+    "skipLibCheck": true
+  },
+  "rootDir": "lib/",
+  "include": [
+    "app.ts",
+    "lib/**/*.ts",
+    "tests/**/*.ts",
+    "jest.config.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

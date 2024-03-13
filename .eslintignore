@@ -1,0 +1,14 @@
+# JS generated files from TS
+dist/**/*
+
+app.js
+app.d.ts
+app.js.map
+lib/**/*.d.ts
+lib/**/*.js.map
+lib/**/*.js
+
+
+# tests
+features/**/*.js
+form/
