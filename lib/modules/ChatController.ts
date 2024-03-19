@@ -15,9 +15,27 @@ class ChatController extends Controller {
                     http: [
                         { verb: "get", path: "chat/messages" }
                     ]
+                },
+                sendMessage: {
+                    handler: this.sendMessage,
+                    http: [
+                        { verb: "post", path: "chat/messages" }
+                    ]
                 }
             }
         };
+    }
+
+    async sendMessage(request: KuzzleRequest) {
+        if(!request.input.body.author || !request.input.body.content) {
+            throw new BadRequestError("Missing required fields");
+        }
+
+        if(request.input.body.content.length > 255) {
+            throw new BadRequestError("Message content cannot exceed 255 characters");
+        }
+
+        await this.service.createMessage(request.input.body.author, request.input.body.content);
     }
 
     async getMessages(request: KuzzleRequest) {
