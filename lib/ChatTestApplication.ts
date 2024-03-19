@@ -1,7 +1,7 @@
 import { Backend } from "kuzzle";
 import { PrometheusPlugin } from "kuzzle-plugin-prometheus";
 
-export type MyApplicationConfig = {
+export type ChatTestApplicationConfig = {
   someValue: string;
 
   another: {
@@ -9,22 +9,22 @@ export type MyApplicationConfig = {
   };
 };
 
-export class MyApplication extends Backend {
-  public configuration: MyApplicationConfig;
+export class ChatTestApplication extends Backend {
+  public configuration: ChatTestApplicationConfig;
   private prometheusPlugin = new PrometheusPlugin();
 
   get appConfig() {
-    return this.config.content.application as MyApplicationConfig;
+    return this.config.content.application as ChatTestApplicationConfig;
   }
 
-  constructor(config?: MyApplicationConfig) {
-    super("my-application");
+  constructor(config?: ChatTestApplicationConfig) {
+    super("chat-test-application");
 
     if (config) {
       this.configuration = config;
     } else {
       this.configuration = this.config.content
-        .application as MyApplicationConfig;
+        .application as ChatTestApplicationConfig;
     }
 
     this.plugin.use(this.prometheusPlugin);

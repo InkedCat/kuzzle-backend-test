@@ -1,5 +1,5 @@
-import { MyApplication } from "./lib/MyApplication";
+import { ChatTestApplication } from "./lib/ChatTestApplication";
 
-const app = new MyApplication();
+const app = new ChatTestApplication(databaseName)
 
 app.start();
