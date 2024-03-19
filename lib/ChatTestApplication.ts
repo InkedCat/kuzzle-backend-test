@@ -1,4 +1,5 @@
 import { Backend } from "kuzzle";
+import { MessageSchema } from "./interfaces/Message";
 
 export class ChatTestApplication extends Backend {
   private databaseName: string;
