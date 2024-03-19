@@ -3,6 +3,7 @@ import { ChatService } from "./ChatService";
 
 class ChatController extends Controller {
     private service: ChatService;
+    private badWords: string[] = ["MERDE"];
 
     constructor(app: Backend, service: ChatService) {
         super(app);
@@ -33,6 +34,14 @@ class ChatController extends Controller {
 
         if(request.input.body.content.length > 255) {
             throw new BadRequestError("Message content cannot exceed 255 characters");
+        }
+
+        const containBadWord = this.badWords.some(badWord => request.input.body.content.toUpperCase().includes(badWord));
+
+        if(containBadWord) {
+            await this.service.notifyBadWord(request.input.body.author);
+            
+            throw new BadRequestError("Message contains bad word");
         }
 
         await this.service.createMessage(request.input.body.author, request.input.body.content);
