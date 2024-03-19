@@ -1,3 +1,4 @@
+import { KDocumentContent } from "kuzzle";
 import { CollectionMappings } from "kuzzle-sdk";
 
 const MessageSchema : {mappings : CollectionMappings} = {
@@ -11,5 +12,10 @@ const MessageSchema : {mappings : CollectionMappings} = {
     }
 }
 
+interface Message extends KDocumentContent  {
+    author: string,
+    content: string,
+    timestamp: Date
+}
 
-export {MessageSchema};
+export {MessageSchema, Message};
