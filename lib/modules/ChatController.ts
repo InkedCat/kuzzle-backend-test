@@ -55,9 +55,7 @@ class ChatController extends Controller {
         const from = request.input.args.from || 0;
         const size = request.input.args.size || 100;
 
-        console.log(`from: ${from}, size: ${size}`);
-
-        return await this.service.searchMessages( {sort: ["_kuzzle_info.createdAt"], from, size} );
+        return await this.service.searchMessages( {sort: ["_kuzzle_info.createdAt"]} , {from, size} );
     }
 }
 

@@ -13,8 +13,8 @@ class ChatService {
         await this.app.sdk.document.create(this.app.getDatabaseName(), "chat-messages", {author, content});
     }
 
-    async searchMessages(query: JSONObject): Promise<SearchResult<KHit<Message>>> {
-        return await this.app.sdk.document.search<Message>(this.app.getDatabaseName(), "chat-messages", query);
+    async searchMessages(query: JSONObject, options: JSONObject): Promise<SearchResult<KHit<Message>>> {
+        return await this.app.sdk.document.search<Message>(this.app.getDatabaseName(), "chat-messages", query, options);
     }
 
     async notifyBadWord(author: string) {
